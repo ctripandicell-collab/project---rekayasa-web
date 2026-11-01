@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto gap-3">
                 <li class="nav-item">
                     <a href="{{ url('/') }}" class="nav-link">Home</a>
                 </li>
@@ -13,10 +13,13 @@
                     <a href="{{ url('/profile') }}" class="nav-link">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/project') }}" class="nav-link">Project</a>
+                    <a href="{{ url('/projects') }}" class="nav-link">Projects</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/about') }}" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/admin') }}" class="nav-link">Admin</a>
                 </li>
             </ul>
         </div>
