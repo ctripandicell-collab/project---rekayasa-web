@@ -1,9 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminProjectController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\AdminProjectController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/actionlogin', [LoginController::class, 'actionlogin'])->name('action.login');
+Route::post('/logout', [LoginController::class, 'actionlogout'])->name('action.logout');
 
 Route::get('/', function () {
     return view('page.home');
@@ -11,14 +16,13 @@ Route::get('/', function () {
 
 Route::get('/profile', [MahasiswaController::class, 'index']);
 Route::get('/project', [ProjectController::class, 'index'])->name('project.index');
-Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/project/{id}', [ProjectController::class, 'show'])->name('project.show');
 
 Route::get('/about', function () {
     return view('page.about');
 });
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('admin.home');
     })->name('home');
